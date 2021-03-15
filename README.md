@@ -1,6 +1,6 @@
 ## Find Dead Links
 
-This is a quick tool to find dead links in `.md` files in a github repo
+This is a quick tool to find dead links in `.md` files in a git repo
 
 It requires Python3.7
 
