@@ -15,11 +15,11 @@ $ cd find-dead-links
 $ pip3 install -r requirements.txt
 ```
 
-3. Edit the `MD_EXTENSION` and `BASE_URL` in the script
+3. Edit the `MD_EXTENSION` if necessary (Default: `.md`)
 
 4. Run the script with path to your git repo
 ```BASH
-$ python3 find_dead_links.py ../path/to.repo
+$ python3 find_dead_links.py ../path/to/repo
 [*] Finding all .md pages
 	[*] Found 185 pages
 [*] Finding all links in pages
@@ -27,3 +27,12 @@ $ python3 find_dead_links.py ../path/to.repo
 [*] Trying links
 Page: /README.md, Link: https://github.com/kubeflow/manifests/tree/master/kfserving, Status: 404
 ```
+
+
+#### Notes
+
+1. HTTP/HTTPS links are requested with python requests
+
+2. Other links are checked by trying to find the file localy
+
+3. `HTTP 459`. This error is Github rate limiting

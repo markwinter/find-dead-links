@@ -7,7 +7,6 @@ from bs4 import BeautifulSoup
 
 
 MD_EXTENSION = ".md"
-BASE_URL = "https://github.com/kubeflow/kfserving/blob/master"
 
 
 def find_pages(base_path : str) -> list:
