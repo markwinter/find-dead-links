@@ -34,8 +34,8 @@ Page: /README.md, Link: https://github.com/kubeflow/manifests/tree/master/kfserv
 
 #### Notes
 
-1. HTTP/HTTPS links are requested with python requests
+1. HTTP links are requested with python requests
 
-2. Other links are checked by trying to find the file localy
+2. Other links are checked by trying to find the file locally
 
 3. `HTTP 459` This error is Github rate limiting
