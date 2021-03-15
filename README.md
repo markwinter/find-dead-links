@@ -15,7 +15,9 @@ $ cd find-dead-links
 $ pip3 install -r requirements.txt
 ```
 
-3. Run the script with path to your git repo
+3. Edit the `MD_EXTENSION` and `BASE_URL` in the script
+
+4. Run the script with path to your git repo
 ```BASH
 $ python3 find_dead_links.py ../path/to.repo
 [*] Finding all .md pages
