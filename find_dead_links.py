@@ -36,36 +36,36 @@ def find_links(base_path : str, pages : list) -> list:
                 l = link.get('href')
                 if l.startswith('#'):
                     continue
-                elif l.startswith('http'):
-                    links.append((page, l))
-                else:
-                    if l.startswith("./"):
-                        l = l[2:]
-                    links.append((page, f"{BASE_URL}/{base_dir}/{l}"))
+                links.append((page, l.split("#")[0]))  # split to remove anchors
 
     print(f"\t[*] Found {len(links)} links")
     return links
 
 
-def try_links(links : list):
+def try_links(base_path : str, links : list):
     print("[*] Trying links")
 
     for idx, (page, link) in enumerate(links):
-        try:
-            r = requests.get(f"{link}", allow_redirects=True)
-        except Exception:
-            if r.status_code == 429:
-                # We were rate-limited, try again
-                links.append((page, link))
-            else:
-                print(f"Page: {page}, Link: {link}, Status: {r.status_code}")
-            continue
+        if link.startswith('http'):
+            try:
+                r = requests.get(f"{link}", allow_redirects=True)
+            except Exception:
+                print(f"Page: {page}, Link: {link}, Status: HTTP {r.status_code}")
+                continue
 
-        if r.status_code != 200:
-            print(f"Page: {page}, Link: {link}, Status: {r.status_code}")
+            if r.status_code != 200:
+                print(f"Page: {page}, Link: {link}, Status: HTTP {r.status_code}")
+
+        else:
+            page_dir = os.path.dirname(page)
+            page_dir = f"{base_path}/{page_dir}"
+            resolved_path = f"{page_dir}/{link}"
+
+            if os.path.isfile(resolved_path) is False and os.path.isdir(resolved_path) is False:
+                print(f"Page: {page}, Link: {resolved_path}, Status: local file/dir not found")
 
 
 if __name__ == "__main__":
     pages = find_pages(sys.argv[1])
     links = find_links(sys.argv[1], pages)
-    try_links(links)
+    try_links(sys.argv[1], links)
