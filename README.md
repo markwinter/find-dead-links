@@ -6,12 +6,15 @@ It requires Python3.7
 
 #### Usage
 
-1. Clone
-`$ git clone https://github.com/markwinter/find-dead-links.git`
+1. Clone this repo
+
+```BASH
+$ git clone https://github.com/markwinter/find-dead-links.git`
+$ cd find-dead-links
+```
 
 2. Install the required python modules
 ```BASH
-$ cd find-dead-links
 $ pip3 install -r requirements.txt
 ```
 
@@ -35,4 +38,4 @@ Page: /README.md, Link: https://github.com/kubeflow/manifests/tree/master/kfserv
 
 2. Other links are checked by trying to find the file localy
 
-3. `HTTP 459`. This error is Github rate limiting
+3. `HTTP 459` This error is Github rate limiting
