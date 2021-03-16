@@ -9,7 +9,7 @@ It requires Python3.7
 1. Clone this repo
 
 ```BASH
-$ git clone https://github.com/markwinter/find-dead-links.git`
+$ git clone https://github.com/markwinter/find-dead-links.git
 $ cd find-dead-links
 ```
 
