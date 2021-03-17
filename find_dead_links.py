@@ -31,6 +31,8 @@ def find_links(base_path : str, pages : list) -> list:
             soup = BeautifulSoup(markdown.markdown(p.read()), features="lxml")
             for link in soup.findAll('a'):
                 l = link.get('href')
+                if l is None:
+                    continue
                 if l.startswith('#'):
                     continue
                 links.append((page, l.split("#")[0]))  # split to remove anchors
