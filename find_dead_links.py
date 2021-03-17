@@ -27,8 +27,6 @@ def find_links(base_path : str, pages : list) -> list:
 
     links = []
     for page in pages:
-        base_dir = os.path.dirname(page)
-
         with open(f"{base_path}{page}", "r") as p:
             soup = BeautifulSoup(markdown.markdown(p.read()), features="lxml")
             for link in soup.findAll('a'):
